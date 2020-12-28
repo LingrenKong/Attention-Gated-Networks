@@ -13,3 +13,11 @@ PIP功能的更改可以看这个讨论：https://stackoverflow.com/questions/26
 修改setup之后，采用pip install -e .（注意那个`.`是有用的，相比原本删了`--process-dependency-links`
 
 气死了……NormalizeMedic是不存在于torchsample的内容，这就离谱（尤其是论文指定了版本……）
+
+发现是因为作者fork并且修正了一个版本：pip uninstall torchsample；pip install git+https://github.com/ozan-oktay/torchsample@master
+
+但是还是有其他依赖性不在setup里面
+> cv2  opencv-python
+> sklearn
+
+到此为止可以确定代码的运行不存在问题了，接下来需要处理数据。
