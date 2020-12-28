@@ -14,15 +14,15 @@ from models import get_model
 def train(arguments):
 
     # Parse input arguments
-    json_filename = arguments.config
-    network_debug = arguments.debug
+    json_filename = arguments.config # 传入参数 配置文件
+    network_debug = arguments.debug # 传入参数，是否debug
 
     # Load options
-    json_opts = json_file_to_pyobj(json_filename)
+    json_opts = json_file_to_pyobj(json_filename) #json文件转换
     train_opts = json_opts.training
 
     # Architecture type
-    arch_type = train_opts.arch_type
+    arch_type = train_opts.arch_type #结构类型，对应不同数据集（见下）
 
     # Setup Dataset and Augmentation
     ds_class = get_dataset(arch_type)
@@ -31,7 +31,7 @@ def train(arguments):
 
     # Setup the NN Model
     model = get_model(json_opts.model)
-    if network_debug:
+    if network_debug:#debug显示内容
         print('# of pars: ', model.get_number_parameters())
         print('fp time: {0:.3f} sec\tbp time: {1:.3f} sec per sample'.format(*model.get_fp_bp_time()))
         exit()

@@ -1,0 +1,1 @@
+nohup python train_segmentation.py --config configs/config_test.json
